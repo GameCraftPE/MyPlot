@@ -10,15 +10,15 @@ use pocketmine\level\Level;
 
 class MyPlotGenerator extends Generator
 {
-	/** @var Level */
+	/** @var ChunkManager $level */
 	private $level;
-	/** @var string[] */
+	/** @var string[] $settings */
 	private $settings;
 
 	/** @var Block */
 	public $roadBlock, $wallBlock, $plotFloorBlock, $plotFillBlock, $bottomBlock;
 	/** @var int */
-	public $roadWidth, $plotSize, $groundHeight;
+	public $roadWidth = 7, $plotSize = 32, $groundHeight = 64;
 
 	const PLOT = 0;
 	const ROAD = 1;
