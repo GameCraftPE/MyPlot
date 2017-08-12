@@ -16,6 +16,7 @@ use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat;
+use pocketmine\level\particle\DustParticle;
 
 class EventListener implements Listener
 {
@@ -157,7 +158,7 @@ class EventListener implements Listener
   }
 
   public function onPlayerMove(PlayerMoveEvent $event) {
-    if($event->getPlayer()->hasPermission("rank.diamond")){
+    if($event->getPlayer()->hasPermission("rank.lapis")){
       $pos = $event->getFrom();
       $red = new DustParticle($pos->add(0, 2.5), 252, 17, 17);
       $orange = new DustParticle($pos->add(0, 2.1), 252, 135, 17);
@@ -165,7 +166,6 @@ class EventListener implements Listener
       $green = new DustParticle($pos->add(0, 1.3), 17, 252, 17);
       $lblue = new DustParticle($pos->add(0, 0.9), 94, 94, 252);
       $dblue = new DustParticle($pos->add(0, 0.5), 17, 17, 252);
-
       foreach ([$red, $orange, $yellow, $green, $lblue, $dblue] as $particle) {
         $pos->getLevel()->addParticle($particle);
       }
