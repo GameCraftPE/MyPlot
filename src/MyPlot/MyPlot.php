@@ -9,6 +9,7 @@ use MyPlot\provider\MySQLProvider;
 use MyPlot\provider\PocketMoneyProvider;
 use MyPlot\provider\YAMLDataProvider;
 use MyPlot\task\ClearPlotTask;
+use MyPlot\task\ParticleTask;
 use MyPlot\provider\DataProvider;
 use MyPlot\provider\SQLiteDataProvider;
 use MyPlot\provider\EconomyProvider;
@@ -444,6 +445,7 @@ class MyPlot extends PluginBase
 	/* -------------------------- Non-API part -------------------------- */
 
 	public function onEnable() {
+		$this->getServer()->getScheduler()->scheduleRepeatingTask(new ParticleTask($this), 0.001);
 		@mkdir($this->getDataFolder());
 		SpoonDetector::printSpoon($this, "spoon.txt");
 
